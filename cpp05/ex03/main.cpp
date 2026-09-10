@@ -10,7 +10,7 @@ int main()
     forms[0] = someRandomIntern.makeForm("shrubbery creation", "home");
     forms[1] = someRandomIntern.makeForm("robotomy request", "Bender");
     forms[2] = someRandomIntern.makeForm("presidential pardon", "Marvin");
-    forms[3] = someRandomIntern.makeForm("formulaire inexistant", "cible"); // doit afficher une erreur, retourner NULL
+    forms[3] = someRandomIntern.makeForm("formulaire inexistant", "cible");
 
     Bureaucrat b("PDG", 1);
 

@@ -15,7 +15,7 @@ class AForm
         const int           _gradeToSign;
         const int           _gradeToExecute;
 
-        AForm(); // pas de constructeur par défaut : un AForm a toujours un nom
+        AForm();
 
     public:
         AForm(const std::string &name, int gradeToSign, int gradeToExecute);

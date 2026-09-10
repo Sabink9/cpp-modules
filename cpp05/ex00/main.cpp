@@ -2,7 +2,6 @@
 
 int main()
 {
-    // Test 1 : création normale
     try
     {
         Bureaucrat b;
@@ -13,7 +12,6 @@ int main()
         std::cerr << "Erreur : " << e.what() << std::endl;
     }
 
-    // Test 2 : grade trop haut (< 1)
     try
     {
         Bureaucrat b("Trop haut", 0);
@@ -24,7 +22,6 @@ int main()
         std::cerr << "Erreur : " << e.what() << std::endl;
     }
 
-    // Test 3 : grade trop bas (> 150)
     try
     {
         Bureaucrat b("Trop bas", 200);
@@ -35,7 +32,6 @@ int main()
         std::cerr << "Erreur : " << e.what() << std::endl;
     }
 
-    // Test 4 : incrémenter jusqu'à dépasser la limite haute
     try
     {
         Bureaucrat b("Ambitieux", 2);
@@ -49,7 +45,6 @@ int main()
         std::cerr << "Erreur : " << e.what() << std::endl;
     }
 
-    // Test 5 : décrémenter jusqu'à dépasser la limite basse
     try
     {
         Bureaucrat b("Fatigue", 149);
@@ -63,7 +58,6 @@ int main()
         std::cerr << "Erreur : " << e.what() << std::endl;
     }
 
-    // Test 6 : constructeur de copie + operator=
     try
     {
         Bureaucrat original("Original", 42);
@@ -72,7 +66,7 @@ int main()
 
         Bureaucrat autre("Autre", 100);
         autre = original;
-        std::cout << autre << std::endl; // même grade que original, nom inchangé
+        std::cout << autre << std::endl;
     }
     catch (std::exception &e)
     {

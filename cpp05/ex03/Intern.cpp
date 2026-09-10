@@ -23,8 +23,6 @@ Intern::~Intern()
 {
 }
 
-// Une petite fonction "fabrique" par type de formulaire.
-// Signature identique pour toutes -> on peut les ranger dans le même tableau.
 static AForm *createShrubbery(const std::string &target)
 {
     return (new ShrubberyCreationForm(target));

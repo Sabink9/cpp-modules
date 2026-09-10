@@ -17,7 +17,7 @@ int main()
 
         std::cout << shrub << std::endl;
         high.signForm(shrub);
-        high.executeForm(shrub); // doit créer le fichier home_shrubbery
+        high.executeForm(shrub);
     }
     catch (std::exception &e)
     {
@@ -30,7 +30,7 @@ int main()
         Bureaucrat high("Directeur", 1);
         RobotomyRequestForm robo("Bender");
 
-        high.executeForm(robo); // pas signé -> erreur attendue
+        high.executeForm(robo);
     }
     catch (std::exception &e)
     {
@@ -43,7 +43,7 @@ int main()
         Bureaucrat low("Stagiaire", 150);
         RobotomyRequestForm robo("Bender");
 
-        low.signForm(robo); // grade insuffisant pour signer (72 requis)
+        low.signForm(robo);
     }
     catch (std::exception &e)
     {
@@ -57,8 +57,8 @@ int main()
         Bureaucrat executor("Stagiaire", 100);
         RobotomyRequestForm robo("Bender");
 
-        signer.signForm(robo);       // grade 72 == 72 requis -> OK
-        executor.executeForm(robo);  // grade 100 > 45 requis -> échoue
+        signer.signForm(robo);
+        executor.executeForm(robo);
     }
     catch (std::exception &e)
     {

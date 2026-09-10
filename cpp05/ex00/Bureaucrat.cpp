@@ -29,7 +29,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _grade(oth
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
     if (this != &other)
-        _grade = other._grade; // _name est const, on ne peut pas (et ne doit pas) la réassigner
+        _grade = other._grade;
     return (*this);
 }
 
