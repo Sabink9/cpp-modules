@@ -12,7 +12,7 @@ template <class T>
 T& Array<T>::operator[](unsigned int index)
 {
 	if (index >= _size)
-		throw std::out_of_range("Index out of bounds");
+		throw std::exception();
 	return _data[index];
 }
 
