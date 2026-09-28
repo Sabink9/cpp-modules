@@ -1,6 +1,6 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = whatever
+NAME = easyfind
 SRCS = main.cpp
 OBJ = $(SRCS:.cpp=.o)
 
