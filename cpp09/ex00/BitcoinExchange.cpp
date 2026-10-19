@@ -135,7 +135,74 @@ e_valueStatus	BitcoinExchange::isValidValue(const std::string &str, double &valu
 	return (VALUE_OK);
 }
 
+double	BitcoinExchange::getRate(const std::string &date) const
+{
+	std::map<std::string, double>::const_iterator it = _database.lower_bound(date);
+
+	if (it == _database.end() || it->first != date)
+	{
+		if (it == _database.begin())
+			return (-1);
+		--it;
+	}
+	return (it->second);
+}
+
+
 void	BitcoinExchange::processInput(const std::string &filename)
 {
+	std::ifstream myReadFile(filename.c_str());
+	if (!myReadFile.is_open())
+		throw std::runtime_error("Error: could not open file.");
 
+	std::string	line;
+	std::string	date;
+	std::string	valueStr;
+	double		value;
+	double		rate;
+
+	std::getline(myReadFile, line);
+	while (std::getline(myReadFile, line))
+	{
+		size_t sep = line.find(" | ");
+		if (sep == std::string::npos)
+		{
+			std::cerr << "Error: bad input => " << line << std::endl;
+			continue;
+		}
+		date = line.substr(0, sep);
+		valueStr = line.substr(sep + 3);
+
+		if (!isValidDate(date))
+		{
+			std::cerr << "Error: bad input => " << date << std::endl;
+			continue;
+		}
+
+		e_valueStatus status = isValidValue(valueStr, value);
+		if (status == VALUE_BAD_INPUT)
+		{
+			std::cerr << "Error: bad input => " << line << std::endl;
+			continue;
+		}
+		if (status == VALUE_NEGATIVE)
+		{
+			std::cerr << "Error: not a positive number." << std::endl;
+			continue;
+		}
+		if (status == VALUE_TOO_LARGE)
+		{
+			std::cerr << "Error: too large a number." << std::endl;
+			continue;
+		}
+
+		rate = getRate(date);
+		if (rate < 0)
+		{
+			std::cerr << "Error: bad input => " << date << std::endl;
+			continue;
+		}
+
+		std::cout << date << " => " << value << " = " << value * rate << std::endl;
+	}
 }
