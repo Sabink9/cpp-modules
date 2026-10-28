@@ -10,7 +10,7 @@ class RPN
 private:
     std::stack<long, std::list<long> > _stack;
 
-    void applyOperator(char op);   // dépile 2, calcule, rempile
+    void applyOperator(char op);
 
 public:
     RPN();
